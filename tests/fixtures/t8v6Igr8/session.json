@@ -1,0 +1,37 @@
+{
+  "id": "ses_18684d584ffe1JuGPUt8v6Igr8",
+  "slug": "cosmic-forest",
+  "projectID": "abe31d5b53e39bd50945e406d1e035e238c2f481",
+  "directory": "/home/eki/Projects/opencode-local-share",
+  "path": "",
+  "summary": {
+    "additions": 11,
+    "deletions": 0,
+    "files": 1
+  },
+  "cost": 0.022821143999999998,
+  "tokens": {
+    "input": 12628,
+    "output": 159,
+    "reasoning": 32,
+    "cache": {
+      "read": 12672,
+      "write": 0
+    }
+  },
+  "share": {
+    "url": "https://opncd.ai/share/t8v6Igr8"
+  },
+  "title": "Creating TEST_EDITS.md with poem",
+  "agent": "build",
+  "model": {
+    "id": "deepseek-v4-pro",
+    "name": "DeepSeek V4 Pro",
+    "providerID": "opencode-go"
+  },
+  "version": "1.15.7",
+  "time": {
+    "created": 1780154575483,
+    "updated": 1780154599686
+  }
+}

@@ -1,0 +1,26 @@
+# Devenv
+.devenv*
+devenv.local.nix
+devenv.local.yaml
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
+
+# Dependencies
+node_modules
+bun.lock
+
+# Build output
+dist
+
+# Upstream (git submodule)
+upstream
+
+# Test HTML files
+*.html
+
+# Test results
+test-results

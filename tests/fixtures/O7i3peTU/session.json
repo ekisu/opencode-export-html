@@ -1,0 +1,36 @@
+{
+  "id": "ses_1858fba92ffeOFIooCO7i3peTU",
+  "slug": "swift-tiger",
+  "projectID": "abe31d5b53e39bd50945e406d1e035e238c2f481",
+  "directory": "/home/eki/Projects/opencode-local-share",
+  "path": "",
+  "summary": {
+    "additions": 43,
+    "deletions": 518,
+    "files": 4
+  },
+  "cost": 0.267797832,
+  "tokens": {
+    "input": 75862,
+    "output": 7622,
+    "reasoning": 17314,
+    "cache": {
+      "read": 3380736,
+      "write": 0
+    }
+  },
+  "share": {
+    "url": "https://opncd.ai/share/O7i3peTU"
+  },
+  "title": "Plan for SVG icons in exported HTML",
+  "agent": "build",
+  "model": {
+    "id": "deepseek-v4-pro",
+    "providerID": "opencode-go"
+  },
+  "version": "1.15.7",
+  "time": {
+    "created": 1780170638703,
+    "updated": 1780172078401
+  }
+}

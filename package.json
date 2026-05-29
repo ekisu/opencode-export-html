@@ -1,0 +1,56 @@
+{
+  "name": "opencode-export-html",
+  "version": "0.1.0",
+  "description": "Export OpenCode sessions to self-contained HTML files",
+  "license": "MIT",
+  "type": "module",
+  "main": "src/index.ts",
+  "files": [
+    "src",
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "bun run src/build.ts",
+    "test": "playwright test",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@kobalte/core": "^0.13.11",
+    "@opencode-ai/plugin": "^1.15.0",
+    "@opencode-ai/sdk": "1.15.7",
+    "@pierre/diffs": "^1.2.4",
+    "@solid-primitives/event-listener": "^2.4.5",
+    "dompurify": "^3.4.7",
+    "fzstd": "^0.1.1",
+    "katex": "^0.17.0",
+    "marked-katex-extension": "^5.1.10",
+    "morphdom": "^2.7.8",
+    "motion": "^12.40.0",
+    "playwright": "^1.60.0",
+    "remend": "^1.3.0",
+    "strip-ansi": "^7.2.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@solid-primitives/resize-observer": "^2.0.0",
+    "@tailwindcss/vite": "4.1.11",
+    "diff": "^7.0.0",
+    "fuzzysort": "3.1.0",
+    "lang-map": "^0.4.0",
+    "luxon": "^3.5.0",
+    "marked": "^15.0.0",
+    "marked-shiki": "^1.2.1",
+    "remeda": "2.26.0",
+    "shiki": "^1.29.2",
+    "solid-js": "^1.9.0",
+    "solid-list": "0.3.0",
+    "tailwindcss": "4.1.11",
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0",
+    "vite-plugin-solid": "^2.11.0"
+  },
+  "peerDependencies": {
+    "@opencode-ai/plugin": "^1.15.0"
+  }
+}

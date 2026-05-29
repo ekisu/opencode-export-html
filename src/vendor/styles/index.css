@@ -1,0 +1,43 @@
+@layer theme, base, components, utilities;
+
+@import "../../../upstream/packages/ui/src/styles/colors.css" layer(theme);
+@import "../../../upstream/packages/ui/src/styles/theme.css" layer(theme);
+
+@import "../../../upstream/packages/ui/src/styles/base.css" layer(base);
+@import "katex/dist/katex.min.css" layer(base);
+
+@import "../../../upstream/packages/ui/src/components/accordion.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/animated-number.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/basic-tool.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/button.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/card.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/checkbox.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/collapsible.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/diff-changes.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/file.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/file-icon.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/hover-card.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/icon.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/icon-button.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/image-preview.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/logo.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/markdown.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/message-nav.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/message-part.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/provider-icon.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/scroll-view.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/session-review.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/session-turn.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/shell-submessage.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/spinner.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/sticky-accordion-header.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/tabs.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/text-shimmer.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/tool-count-label.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/tool-count-summary.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/tool-error-card.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/tool-status-title.css" layer(components);
+@import "../../../upstream/packages/ui/src/components/tooltip.css" layer(components);
+
+@import "./tailwind-setup.css";
+@import "../../../upstream/packages/ui/src/styles/animations.css" layer(utilities);

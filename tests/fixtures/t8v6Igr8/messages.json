@@ -1,0 +1,227 @@
+[
+  {
+    "info": {
+      "id": "msg_e797b2a8d001CK13E94IXHHjkw",
+      "sessionID": "ses_18684d584ffe1JuGPUt8v6Igr8",
+      "role": "user",
+      "time": {
+        "created": 1780154575515
+      },
+      "summary": {
+        "diffs": [
+          {
+            "file": "TEST_EDITS.md",
+            "patch": "Index: TEST_EDITS.md\n===================================================================\n--- TEST_EDITS.md\t\n+++ TEST_EDITS.md\t\n@@ -0,0 +1,11 @@\n+# A Poem\n+\n+The wind that whispers through the trees\n+Carries secrets on the breeze\n+It tells of mountains far away\n+And oceans touched by sun's first ray\n+\n+Each leaf that trembles, every bloom\n+Knows winter's chill and summer's bloom\n+The earth spins on without a sound\n+A miracle on sacred ground\n",
+            "additions": 11,
+            "deletions": 0,
+            "status": "added"
+          }
+        ]
+      },
+      "agent": "build",
+      "model": {
+        "providerID": "opencode-go",
+        "modelID": "deepseek-v4-pro"
+      }
+    },
+    "parts": [
+      {
+        "id": "prt_e797b2a8d002B02xAvxkCt4WTl",
+        "sessionID": "ses_18684d584ffe1JuGPUt8v6Igr8",
+        "messageID": "msg_e797b2a8d001CK13E94IXHHjkw",
+        "type": "text",
+        "text": "Write a sample file `TEST_EDITS.md` containing a poem"
+      }
+    ]
+  },
+  {
+    "info": {
+      "id": "msg_e797b2ab1001iJZcLT0YNzLMBT",
+      "sessionID": "ses_18684d584ffe1JuGPUt8v6Igr8",
+      "role": "assistant",
+      "time": {
+        "created": 1780154575537,
+        "completed": 1780154587965
+      },
+      "parentID": "msg_e797b2a8d001CK13E94IXHHjkw",
+      "modelID": "deepseek-v4-pro",
+      "providerID": "opencode-go",
+      "mode": "build",
+      "agent": "build",
+      "path": {
+        "cwd": "/home/eki/Projects/opencode-local-share",
+        "root": "/home/eki/Projects/opencode-local-share"
+      },
+      "cost": 0.02240772,
+      "tokens": {
+        "total": 12714,
+        "input": 12550,
+        "output": 144,
+        "reasoning": 20,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "finish": "tool-calls"
+    },
+    "parts": [
+      {
+        "id": "prt_e797b3e8a001qdftof03X1xBzj",
+        "sessionID": "ses_18684d584ffe1JuGPUt8v6Igr8",
+        "messageID": "msg_e797b2ab1001iJZcLT0YNzLMBT",
+        "type": "step-start",
+        "snapshot": "9b057a6eac7b8ba44713000d0d9448ab5dac67e4"
+      },
+      {
+        "id": "prt_e797b5a960016EiK9CoDE90ng3",
+        "sessionID": "ses_18684d584ffe1JuGPUt8v6Igr8",
+        "messageID": "msg_e797b2ab1001iJZcLT0YNzLMBT",
+        "type": "reasoning",
+        "text": "The user wants me to create a file called `TEST_EDITS.md` containing a poem.",
+        "time": {
+          "start": 1780154587798,
+          "end": 1780154587856
+        }
+      },
+      {
+        "id": "prt_e797b5ad30014hKFAXHEagZSWl",
+        "sessionID": "ses_18684d584ffe1JuGPUt8v6Igr8",
+        "messageID": "msg_e797b2ab1001iJZcLT0YNzLMBT",
+        "type": "tool",
+        "callID": "call_00_Top0HQwEwpc2zzQG3Klm0017",
+        "tool": "write",
+        "state": {
+          "status": "completed",
+          "input": {
+            "filePath": "/home/eki/Projects/opencode-local-share/TEST_EDITS.md",
+            "content": "# A Poem\n\nThe wind that whispers through the trees\nCarries secrets on the breeze\nIt tells of mountains far away\nAnd oceans touched by sun's first ray\n\nEach leaf that trembles, every bloom\nKnows winter's chill and summer's bloom\nThe earth spins on without a sound\nA miracle on sacred ground\n"
+          },
+          "output": "Wrote file successfully.",
+          "title": "TEST_EDITS.md",
+          "metadata": {
+            "diagnostics": {},
+            "filepath": "/home/eki/Projects/opencode-local-share/TEST_EDITS.md",
+            "exists": false,
+            "truncated": false
+          },
+          "time": {
+            "start": 1780154587879,
+            "end": 1780154587894
+          }
+        }
+      },
+      {
+        "id": "prt_e797b5b1e001cJYshScmpU3Uso",
+        "sessionID": "ses_18684d584ffe1JuGPUt8v6Igr8",
+        "messageID": "msg_e797b2ab1001iJZcLT0YNzLMBT",
+        "type": "step-finish",
+        "reason": "tool-calls",
+        "snapshot": "af5b1a40c620d297b0d0f7d6c30c8a369dc92823",
+        "cost": 0.02240772,
+        "tokens": {
+          "total": 12714,
+          "input": 12550,
+          "output": 144,
+          "reasoning": 20,
+          "cache": {
+            "read": 0,
+            "write": 0
+          }
+        }
+      },
+      {
+        "id": "prt_e797b5b39001TJiBr8qTKN2Z2W",
+        "sessionID": "ses_18684d584ffe1JuGPUt8v6Igr8",
+        "messageID": "msg_e797b2ab1001iJZcLT0YNzLMBT",
+        "type": "patch",
+        "hash": "9b057a6eac7b8ba44713000d0d9448ab5dac67e4",
+        "files": [
+          "/home/eki/Projects/opencode-local-share/TEST_EDITS.md"
+        ]
+      }
+    ]
+  },
+  {
+    "info": {
+      "id": "msg_e797b5b420016L6jL596pBQ0LG",
+      "sessionID": "ses_18684d584ffe1JuGPUt8v6Igr8",
+      "role": "assistant",
+      "time": {
+        "created": 1780154587970,
+        "completed": 1780154599659
+      },
+      "parentID": "msg_e797b2a8d001CK13E94IXHHjkw",
+      "modelID": "deepseek-v4-pro",
+      "providerID": "opencode-go",
+      "mode": "build",
+      "agent": "build",
+      "path": {
+        "cwd": "/home/eki/Projects/opencode-local-share",
+        "root": "/home/eki/Projects/opencode-local-share"
+      },
+      "cost": 0.000413424,
+      "tokens": {
+        "total": 12777,
+        "input": 78,
+        "output": 15,
+        "reasoning": 12,
+        "cache": {
+          "read": 12672,
+          "write": 0
+        }
+      },
+      "finish": "stop"
+    },
+    "parts": [
+      {
+        "id": "prt_e797b83da001VBrtM06fmHWiqb",
+        "sessionID": "ses_18684d584ffe1JuGPUt8v6Igr8",
+        "messageID": "msg_e797b5b420016L6jL596pBQ0LG",
+        "type": "step-start",
+        "snapshot": "af5b1a40c620d297b0d0f7d6c30c8a369dc92823"
+      },
+      {
+        "id": "prt_e797b8625001x6YZMZPajIOfBC",
+        "sessionID": "ses_18684d584ffe1JuGPUt8v6Igr8",
+        "messageID": "msg_e797b5b420016L6jL596pBQ0LG",
+        "type": "reasoning",
+        "text": "Done. Created the file with a short nature-themed poem.",
+        "time": {
+          "start": 1780154598949,
+          "end": 1780154599363
+        }
+      },
+      {
+        "id": "prt_e797b87c6001lyoCrhhvZxYfX5",
+        "sessionID": "ses_18684d584ffe1JuGPUt8v6Igr8",
+        "messageID": "msg_e797b5b420016L6jL596pBQ0LG",
+        "type": "text",
+        "text": "Created `TEST_EDITS.md` with a nature-themed poem.",
+        "time": {
+          "start": 1780154599366,
+          "end": 1780154599623
+        }
+      },
+      {
+        "id": "prt_e797b88da001T2ERsDdNh7tMux",
+        "sessionID": "ses_18684d584ffe1JuGPUt8v6Igr8",
+        "messageID": "msg_e797b5b420016L6jL596pBQ0LG",
+        "type": "step-finish",
+        "reason": "stop",
+        "snapshot": "af5b1a40c620d297b0d0f7d6c30c8a369dc92823",
+        "cost": 0.000413424,
+        "tokens": {
+          "total": 12777,
+          "input": 78,
+          "output": 15,
+          "reasoning": 12,
+          "cache": {
+            "read": 12672,
+            "write": 0
+          }
+        }
+      }
+    ]
+  }
+]
