@@ -15,9 +15,6 @@ node_modules
 # Build output
 dist
 
-# Upstream (git submodule)
-upstream
-
 # Test HTML files
 *.html
 
