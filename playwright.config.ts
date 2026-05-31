@@ -5,8 +5,10 @@ export default defineConfig({
   timeout: 30000,
   use: {
     viewport: { width: 1280, height: 900 },
-    launchOptions: {
-      executablePath: "/etc/profiles/per-user/eki/bin/chromium",
-    },
+    ...(!process.env.CI && {
+      launchOptions: {
+        executablePath: "/etc/profiles/per-user/eki/bin/chromium",
+      },
+    }),
   },
 })
