@@ -1,14 +1,5 @@
 import type { LanguageRegistration } from "@shikijs/types"
-import { resolve, dirname } from "node:path"
-import { fileURLToPath } from "node:url"
 import { execFileSync } from "node:child_process"
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
-const rootDir = resolve(__dirname, "..")
-const langsDir = resolve(
-  rootDir,
-  "node_modules/@pierre/diffs/node_modules/@shikijs/langs/dist",
-)
 
 let aliasMap: Map<string, string> | null = null
 
@@ -16,9 +7,7 @@ async function getAliasMap(): Promise<Map<string, string>> {
   if (aliasMap) return aliasMap
 
   const map = new Map<string, string>()
-  const mod = await import(
-    resolve(rootDir, "node_modules/@pierre/diffs/node_modules/shiki/dist/langs.mjs")
-  )
+  const mod = await import("shiki/langs")
   const info: Array<{ id: string; aliases?: string[] }> = mod.bundledLanguagesInfo
 
   for (const entry of info) {
@@ -110,7 +99,7 @@ export async function loadGrammars(
     if (embedded.has(id)) continue
     embedded.add(id)
     try {
-      const mod = await import(resolve(langsDir, `${id}.mjs`))
+      const mod = await import(`@shikijs/langs/${id}`)
       const grammars: LanguageRegistration[] = (mod as Record<string, unknown>).default as LanguageRegistration[]
       const embedLangs = grammars[0]?.embeddedLangs ?? []
       for (const el of embedLangs) {
@@ -129,7 +118,7 @@ export async function loadGrammars(
   for (const id of embedded) {
     if (grammars[id]) continue
     try {
-      const mod = await import(resolve(langsDir, `${id}.mjs`))
+      const mod = await import(`@shikijs/langs/${id}`)
       const data: LanguageRegistration[] = (mod as Record<string, unknown>).default as LanguageRegistration[]
       grammars[id] = data
       totalBytes += Buffer.byteLength(JSON.stringify(data), "utf-8")
