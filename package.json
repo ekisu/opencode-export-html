@@ -4,6 +4,14 @@
   "description": "Export OpenCode sessions to self-contained HTML files",
   "license": "MIT",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ekisu/opencode-export-html.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ekisu/opencode-export-html/issues"
+  },
+  "homepage": "https://github.com/ekisu/opencode-export-html#readme",
   "main": "src/index.ts",
   "exports": {
     "./tui": {
