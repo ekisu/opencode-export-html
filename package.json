@@ -1,6 +1,6 @@
 {
   "name": "opencode-export-html",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Export OpenCode sessions to self-contained HTML files",
   "license": "MIT",
   "type": "module",
