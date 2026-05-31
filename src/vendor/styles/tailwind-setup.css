@@ -42,8 +42,8 @@
   --text-lg: var(--font-size-large);
   --text-xl: var(--font-size-x-large);
 
-  --font-weight-regular: var(--font-weight-regular);
-  --font-weight-medium: var(--font-weight-medium);
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
 
   --leading-lg: var(--line-height-large);
   --leading-xl: var(--line-height-x-large);
