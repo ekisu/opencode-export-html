@@ -8,6 +8,7 @@ import { preloadFileDiff } from "@pierre/diffs/ssr"
 import { parsePatchFiles } from "@pierre/diffs"
 import type { FileDiffMetadata } from "@pierre/diffs"
 import { execFileSync } from "node:child_process"
+import { collectLanguages, loadGrammars, compressLanguages } from "./languages"
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -129,10 +130,14 @@ async function preloadDiffs(diffSources: DiffFile[]): Promise<Record<string, unk
   return result
 }
 
-function generateHtml(data: EmbeddedData): string {
+async function generateHtml(data: EmbeddedData): Promise<string> {
   if (!BOOTSTRAP || !JS_ZST || !CSS_ZST) {
     throw new Error("Viewer bundles not loaded")
   }
+
+  const langs = collectLanguages(data)
+  const { grammars } = await loadGrammars(langs)
+  const languagesZst = compressLanguages(grammars)
 
   const title = (data.session as { title?: string }).title || "OpenCode Session"
   const escapedTitle = title
@@ -145,6 +150,10 @@ function generateHtml(data: EmbeddedData): string {
   const jsonZst = execFileSync("zstd", ["--force", "-19", "-q", "-c"], { input: jsonBuf })
   const jsonB64 = jsonZst.toString("base64")
 
+  const langsBlock = languagesZst
+    ? `<script id="shiki-langs-zst" type="application/zstd+base64">${languagesZst.toString("base64")}</script>`
+    : ""
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -155,6 +164,7 @@ function generateHtml(data: EmbeddedData): string {
 <body>
 <div id="root"></div>
 <script id="session-data-zst" type="application/zstd+base64">${jsonB64}</script>
+${langsBlock}
 <script>${BOOTSTRAP}</script>
 <style type="application/zstd+base64">${CSS_ZST.toString("base64")}</style>
 <script type="application/zstd+base64">${JS_ZST.toString("base64")}</script>
@@ -244,7 +254,7 @@ const tui: TuiPlugin = async (api) => {
             session_diff_preload,
           }
 
-          const html = generateHtml(embeddedData)
+          const html = await generateHtml(embeddedData)
           const title = (session as { title?: string }).title || "session"
           const outPath = join(dir, `${sanitizeFilename(title)}.html`)
 

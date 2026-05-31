@@ -56,7 +56,19 @@
       }
     }
 
-    // Second pass: inject CSS before JS
+    // Second pass: decompress shiki language grammars
+    var langsEl = document.getElementById("shiki-langs-zst")
+    if (langsEl) {
+      var langsJson = decompressBlock(langsEl)
+      if (langsJson) {
+        var script = document.createElement("script")
+        script.textContent = "window.__SHIKI_LANGS__ = " + langsJson + ";"
+        langsEl.parentNode.insertBefore(script, langsEl)
+      }
+      langsEl.remove()
+    }
+
+    // Third pass: inject CSS before JS
     var blocks = document.querySelectorAll('style[type*="zstd"]')
     for (var i = 0; i < blocks.length; i++) {
       var el = blocks[i]
@@ -68,7 +80,7 @@
       }
     }
 
-    // Third pass: inject JS sequentially (execution order matters)
+    // Fourth pass: inject JS sequentially (execution order matters)
     var scripts = document.querySelectorAll('script[type*="zstd"]')
     for (var j = 0; j < scripts.length; j++) {
       var script = scripts[j]
