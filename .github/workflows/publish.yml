@@ -36,8 +36,10 @@ jobs:
           node-version: "22"
           registry-url: "https://registry.npmjs.org"
 
-      - name: Publish to npm (Trusted Publishing / OIDC)
+      - name: Publish to npm
         run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - uses: actions/setup-node@v4
         with:
