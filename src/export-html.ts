@@ -1,13 +1,13 @@
 import { readFile } from "node:fs/promises"
 import { existsSync } from "node:fs"
-import { join } from "node:path"
+import { join, dirname } from "node:path"
 import { homedir } from "node:os"
 import { preloadFileDiff } from "@pierre/diffs/ssr"
 import { parsePatchFiles } from "@pierre/diffs"
 import type { FileDiffMetadata } from "@pierre/diffs"
 import { fileURLToPath } from "node:url"
-import { dirname } from "node:path"
 import { execFileSync } from "node:child_process"
+import { collectLanguages, loadGrammars, compressLanguages } from "./languages"
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -73,14 +73,22 @@ export interface CompressedBundles {
   cssZst: Buffer
 }
 
-export function generateHtml(compressed: CompressedBundles, data: unknown): string {
+export async function generateHtml(compressed: CompressedBundles, data: unknown): Promise<string> {
   const session = (data as any).session || {}
   const title = session.title || "OpenCode Session"
   const escapedTitle = title.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;")
 
+  const langs = collectLanguages(data)
+  const { grammars } = await loadGrammars(langs)
+  const languagesZst = compressLanguages(grammars)
+
   const jsonBuf = Buffer.from(JSON.stringify(data), "utf8")
   const jsonZst = zstdCompressSync(jsonBuf)
   const jsonB64 = jsonZst.toString("base64")
+
+  const langsBlock = languagesZst
+    ? `<script id="shiki-langs-zst" type="application/zstd+base64">${languagesZst.toString("base64")}</script>`
+    : ""
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -92,6 +100,7 @@ export function generateHtml(compressed: CompressedBundles, data: unknown): stri
 <body>
 <div id="root"></div>
 <script id="session-data-zst" type="application/zstd+base64">${jsonB64}</script>
+${langsBlock}
 <script>${compressed.bootstrap}</script>
 <style type="application/zstd+base64">${compressed.cssZst.toString("base64")}</style>
 <script type="application/zstd+base64">${compressed.jsZst.toString("base64")}</script>

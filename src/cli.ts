@@ -125,7 +125,8 @@ async function main() {
     }
 
     const compressed = await loadBundles()
-    const html = generateHtml(compressed, embeddedData)
+
+    const html = await generateHtml(compressed, embeddedData)
 
     const title = session.title as string || "session"
     const outPath = (args.output || join(directory, `${sanitizeFilename(title)}.html`)) as string

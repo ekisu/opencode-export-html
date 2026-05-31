@@ -85,8 +85,32 @@ function workerAliasPlugin(): Plugin {
   }
 }
 
+function shikiLangsTransformPlugin(): Plugin {
+  return {
+    name: "shiki-langs-transform",
+    transform(code, id) {
+      if (id.includes("shiki") && id.includes("langs") && id.endsWith(".mjs")) {
+        return {
+          code: code.replace(
+            /import\(['"]@shikijs\/langs\/([^'"\\]+)['"]\)/g,
+            `Promise.resolve({ default: window.__SHIKI_LANGS__?.["$1"] ?? [] })`,
+          ),
+          map: null,
+        }
+      }
+    },
+  }
+}
+
 export default defineConfig({
-  plugins: [workerInlinePlugin(), workerAliasPlugin(), spriteInlinePlugin(), tailwindcss(), solid()],
+  plugins: [
+    shikiLangsTransformPlugin(),
+    workerInlinePlugin(),
+    workerAliasPlugin(),
+    spriteInlinePlugin(),
+    tailwindcss(),
+    solid(),
+  ],
   root: import.meta.dirname,
   esbuild: {
     tsconfigRaw: JSON.stringify({

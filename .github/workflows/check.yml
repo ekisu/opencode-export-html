@@ -1,16 +1,15 @@
-name: Publish
+name: Check
 
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - main
+      - master
+  pull_request:
 
 jobs:
-  publish:
+  check:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write  # Required for OIDC
 
     steps:
       - uses: actions/checkout@v4
@@ -31,13 +30,3 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - run: bun run test:playwright
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "24"
-          registry-url: "https://registry.npmjs.org"
-
-      - name: Publish to npm (Trusted Publishing / OIDC)
-        run: npm publish --provenance --access public
-
-

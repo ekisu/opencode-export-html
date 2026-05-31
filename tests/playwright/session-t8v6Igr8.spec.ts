@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test"
 import { readFile, writeFile } from "node:fs/promises"
 import { resolve } from "node:path"
-import { generateHtml, loadBundles, collectDiffs, preloadDiffs, I18N } from "../src/export-html"
+import { generateHtml, loadBundles, collectDiffs, preloadDiffs, I18N } from "../../src/export-html"
 
 const SHARE_URL = "https://opncd.ai/share/t8v6Igr8"
 const FIXTURES_DIR = resolve(import.meta.dirname ?? ".", "fixtures/t8v6Igr8")
@@ -15,7 +15,7 @@ test.beforeAll(async () => {
     ? await preloadDiffs(diffSources)
     : {}
   const compressed = await loadBundles()
-  const html = generateHtml(compressed, {
+  const html = await generateHtml(compressed, {
     session,
     messages,
     locale: I18N.locale,
