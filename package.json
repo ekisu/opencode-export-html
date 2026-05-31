@@ -28,7 +28,8 @@
   ],
   "scripts": {
     "build": "bun run src/build.ts",
-    "test": "playwright test",
+    "test:playwright": "playwright test",
+    "test:unit": "bun test tests/",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
