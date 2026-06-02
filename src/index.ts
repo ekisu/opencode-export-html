@@ -262,7 +262,7 @@ const tui: TuiPlugin = async (api) => {
           await writeFile(outPath, html, "utf-8")
 
           const relPath = relative(dir, outPath)
-          api.ui.toast({ message: `Session exported to ${relPath}`, variant: "success" })
+          api.ui.toast({ message: `Session exported to "${relPath}"`, variant: "success" })
         },
       },
     ],
