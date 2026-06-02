@@ -2,6 +2,8 @@
 
 A plugin for [OpenCode](https://github.com/anomalyco/opencode) that adds `/export-to-html` — export any conversation to a self-contained HTML file using the same SolidJS renderer as OpenCode's live share pages.
 
+![Demo screenshot](docs/demo.avif)
+
 ## Why?
 
 OpenCode's `/share` uploads conversations to the cloud. This plugin gives you the **same visual output, fully offline** — a single `.html` file you can open in any browser, share as an attachment, or archive.
